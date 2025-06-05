@@ -1,0 +1,669 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Jun  5 13:10:10 2025
+# Process ID: 23420
+# Current directory: C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/ece485_finalproject_stage2.runs/synth_1
+# Command line: vivado.exe -log riscv_pipeline.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source riscv_pipeline.tcl
+# Log file: C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/ece485_finalproject_stage2.runs/synth_1/riscv_pipeline.vds
+# Journal file: C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/ece485_finalproject_stage2.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source riscv_pipeline.tcl -notrace
+Command: synth_design -top riscv_pipeline -part xc7a200tsbg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 26492 
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:00 ; elapsed = 00:00:03 . Memory (MB): peak = 341.785 ; gain = 99.836
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'riscv_pipeline' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/riscv_pipeline.vhdl:13]
+INFO: [Synth 8-3491] module 'pc_live' declared at 'C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/pc.vhdl:6' bound to instance 'pc_inst' of component 'pc_live' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/riscv_pipeline.vhdl:131]
+INFO: [Synth 8-638] synthesizing module 'pc_live' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/pc.vhdl:15]
+INFO: [Synth 8-256] done synthesizing module 'pc_live' (1#1) [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/pc.vhdl:15]
+INFO: [Synth 8-3491] module 'instr_mem' declared at 'C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/instr_mem.vhdl:5' bound to instance 'instr_mem_inst' of component 'instr_mem' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/riscv_pipeline.vhdl:140]
+INFO: [Synth 8-638] synthesizing module 'instr_mem' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/instr_mem.vhdl:12]
+INFO: [Synth 8-256] done synthesizing module 'instr_mem' (2#1) [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/instr_mem.vhdl:12]
+INFO: [Synth 8-3491] module 'reg_file' declared at 'C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/reg_file.vhdl:6' bound to instance 'reg_file_inst' of component 'reg_file' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/riscv_pipeline.vhdl:157]
+INFO: [Synth 8-638] synthesizing module 'reg_file' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/reg_file.vhdl:19]
+INFO: [Synth 8-256] done synthesizing module 'reg_file' (3#1) [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/reg_file.vhdl:19]
+INFO: [Synth 8-3491] module 'control_unit' declared at 'C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/control_unit.vhdl:6' bound to instance 'control_unit_inst' of component 'control_unit' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/riscv_pipeline.vhdl:170]
+INFO: [Synth 8-638] synthesizing module 'control_unit' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/control_unit.vhdl:19]
+INFO: [Synth 8-256] done synthesizing module 'control_unit' (4#1) [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/control_unit.vhdl:19]
+INFO: [Synth 8-3491] module 'immediate_generator' declared at 'C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/immediate_generator.vhdl:6' bound to instance 'immediate_generator_inst' of component 'immediate_generator' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/riscv_pipeline.vhdl:183]
+INFO: [Synth 8-638] synthesizing module 'immediate_generator' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/immediate_generator.vhdl:13]
+INFO: [Synth 8-256] done synthesizing module 'immediate_generator' (5#1) [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/immediate_generator.vhdl:13]
+INFO: [Synth 8-3491] module 'alu_control' declared at 'C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/alu_control.vhdl:6' bound to instance 'alu_control_inst' of component 'alu_control' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/riscv_pipeline.vhdl:195]
+INFO: [Synth 8-638] synthesizing module 'alu_control' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/alu_control.vhdl:14]
+INFO: [Synth 8-256] done synthesizing module 'alu_control' (6#1) [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/alu_control.vhdl:14]
+INFO: [Synth 8-3491] module 'alu' declared at 'C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/alu.vhdl:6' bound to instance 'alu_inst' of component 'alu' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/riscv_pipeline.vhdl:206]
+INFO: [Synth 8-638] synthesizing module 'alu' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/alu.vhdl:15]
+INFO: [Synth 8-256] done synthesizing module 'alu' (7#1) [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/alu.vhdl:15]
+INFO: [Synth 8-3491] module 'data_mem' declared at 'C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:6' bound to instance 'data_mem_inst' of component 'data_mem' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/riscv_pipeline.vhdl:219]
+INFO: [Synth 8-638] synthesizing module 'data_mem' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:16]
+WARNING: [Synth 8-614] signal 'memory' is read in the process but is not in the sensitivity list [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:25]
+INFO: [Synth 8-256] done synthesizing module 'data_mem' (8#1) [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:16]
+INFO: [Synth 8-256] done synthesizing module 'riscv_pipeline' (9#1) [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/riscv_pipeline.vhdl:13]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[31]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[30]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[29]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[28]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[27]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[26]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[25]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[24]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[23]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[22]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[21]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[20]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[19]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[18]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[17]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[16]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[15]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[14]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[13]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[12]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[11]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[10]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[9]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[8]
+WARNING: [Synth 8-3331] design alu_control has unconnected port funct7[6]
+WARNING: [Synth 8-3331] design alu_control has unconnected port funct7[5]
+WARNING: [Synth 8-3331] design alu_control has unconnected port funct7[4]
+WARNING: [Synth 8-3331] design alu_control has unconnected port funct7[3]
+WARNING: [Synth 8-3331] design alu_control has unconnected port funct7[2]
+WARNING: [Synth 8-3331] design alu_control has unconnected port funct7[1]
+WARNING: [Synth 8-3331] design alu_control has unconnected port funct7[0]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[31]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[30]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[29]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[28]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[27]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[26]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[25]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[24]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[23]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[22]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[21]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[20]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[19]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[18]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[17]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[16]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[15]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[14]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[13]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[12]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[11]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[10]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[9]
+WARNING: [Synth 8-3331] design instr_mem has unconnected port addr[8]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 410.305 ; gain = 168.355
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 410.305 ; gain = 168.355
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a200tsbg484-1
+INFO: [Device 21-403] Loading part xc7a200tsbg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 410.305 ; gain = 168.355
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5546] ROM "memory" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "reg_write" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "mem_read" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "mem_write" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "alu_src" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "branch" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "load_addr" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "jump" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "alu_op" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/alu.vhdl:19]
+INFO: [Synth 8-5546] ROM "memory_reg[0]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[1]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[2]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[3]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[4]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[5]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[6]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[7]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[8]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[9]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[10]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[11]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[12]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[13]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[14]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[15]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[16]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[17]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[18]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[19]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[20]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[21]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[22]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[23]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[24]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[25]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[26]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[27]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[28]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[29]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[30]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[31]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[32]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[33]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[34]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[35]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[36]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[37]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[38]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[39]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[40]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[41]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[42]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[43]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[44]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[45]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[46]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[47]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[48]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[49]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[50]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[51]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[52]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[53]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[54]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[55]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[56]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[57]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[58]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[59]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[60]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[61]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[62]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[63]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[64]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[65]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[66]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[67]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[68]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[69]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[70]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[71]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[72]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[73]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[74]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[75]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[76]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[77]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[78]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[79]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[80]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[81]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[82]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[83]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[84]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[85]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[86]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[87]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[88]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[89]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[90]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memory_reg[91]" won't be mapped to RAM because it is too sparse
+INFO: [Common 17-14] Message 'Synth 8-5546' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-327] inferring latch for variable 'data_out_reg' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[0]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[1]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[2]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[3]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[4]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[5]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[6]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[7]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[8]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[9]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[10]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[11]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[12]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[13]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[14]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[15]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[16]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[17]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[18]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[19]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[20]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[21]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[22]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[23]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[24]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[25]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[26]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[27]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[28]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[29]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[30]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[31]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[32]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[33]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[34]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[35]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[36]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[37]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[38]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[39]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[40]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[41]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[42]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[43]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[44]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[45]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[46]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[47]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[48]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[49]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[50]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[51]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[52]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[53]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[54]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[55]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[56]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[57]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[58]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[59]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[60]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[61]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[62]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[63]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[64]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[65]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[66]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[67]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[68]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[69]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[70]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[71]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[72]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[73]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[74]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[75]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[76]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[77]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[78]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[79]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[80]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[81]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[82]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[83]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[84]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[85]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[86]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[87]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[88]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[89]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[90]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[91]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[92]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[93]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[94]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[95]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[96]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[97]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+WARNING: [Synth 8-327] inferring latch for variable 'memory_reg[98]' [C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/data_mem.vhdl:28]
+INFO: [Common 17-14] Message 'Synth 8-327' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:08 . Memory (MB): peak = 484.488 ; gain = 242.539
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
++---Muxes : 
+	 257 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 8     
+	   5 Input     32 Bit        Muxes := 1     
+	   6 Input      3 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 7     
+	   2 Input      1 Bit        Muxes := 258   
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module riscv_pipeline 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 3     
+Module pc_live 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
+Module instr_mem 
+Detailed RTL Component Info : 
++---Muxes : 
+	 257 Input     32 Bit        Muxes := 1     
+Module control_unit 
+Detailed RTL Component Info : 
++---Muxes : 
+	   8 Input      1 Bit        Muxes := 7     
+Module immediate_generator 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   5 Input     32 Bit        Muxes := 1     
+	   6 Input      3 Bit        Muxes := 1     
+Module alu_control 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 2     
+Module alu 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+Module data_mem 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 256   
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 740 (col length:100)
+BRAMs: 730 (col length: RAMB18 100 RAMB36 50)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[31]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[30]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[29]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[28]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[27]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[26]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[25]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[24]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[23]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[22]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[21]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[20]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[19]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[18]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[17]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[16]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[15]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[14]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[13]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[12]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[11]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[10]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[9]
+WARNING: [Synth 8-3331] design data_mem has unconnected port addr[8]
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[31]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[30]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[29]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[28]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[27]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[26]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[25]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[24]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[23]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[22]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[21]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[20]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[19]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[18]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[17]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[16]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[15]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[14]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[13]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[12]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[11]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[10]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[9]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[8]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[7]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[6]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[5]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[4]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[3]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[2]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[1]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (data_out_reg[0]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][31]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][30]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][29]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][28]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][27]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][26]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][25]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][24]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][23]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][22]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][21]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][20]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][19]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][18]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][17]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][16]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][15]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][14]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][13]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][12]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][11]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][10]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][9]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][8]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][7]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][6]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][5]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][4]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][3]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][2]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][1]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[0][0]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][31]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][30]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][29]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][28]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][27]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][26]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][25]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][24]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][23]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][22]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][21]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][20]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][19]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][18]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][17]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][16]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][15]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][14]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][13]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][12]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][11]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][10]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][9]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][8]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][7]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][6]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][5]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][4]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][3]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][2]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][1]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[1][0]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[2][31]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[2][30]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[2][29]) is unused and will be removed from module data_mem.
+WARNING: [Synth 8-3332] Sequential element (memory_reg[2][28]) is unused and will be removed from module data_mem.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 585.098 ; gain = 343.148
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 585.098 ; gain = 343.148
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 585.098 ; gain = 343.148
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:01 ; elapsed = 00:00:14 . Memory (MB): peak = 585.098 ; gain = 343.148
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:01 ; elapsed = 00:00:14 . Memory (MB): peak = 585.098 ; gain = 343.148
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:01 ; elapsed = 00:00:14 . Memory (MB): peak = 585.098 ; gain = 343.148
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:01 ; elapsed = 00:00:14 . Memory (MB): peak = 585.098 ; gain = 343.148
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:01 ; elapsed = 00:00:14 . Memory (MB): peak = 585.098 ; gain = 343.148
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:01 ; elapsed = 00:00:14 . Memory (MB): peak = 585.098 ; gain = 343.148
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++-+-----+------+
+| |Cell |Count |
++-+-----+------+
++-+-----+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |     0|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:01 ; elapsed = 00:00:14 . Memory (MB): peak = 585.098 ; gain = 343.148
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 8593 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:14 . Memory (MB): peak = 585.098 ; gain = 343.148
+Synthesis Optimization Complete : Time (s): cpu = 00:00:01 ; elapsed = 00:00:14 . Memory (MB): peak = 585.098 ; gain = 343.148
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+138 Infos, 280 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:01 ; elapsed = 00:00:20 . Memory (MB): peak = 685.641 ; gain = 456.461
+WARNING: [Constraints 18-5210] No constraint will be written out.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/ece485_finalproject_stage2.runs/synth_1/riscv_pipeline.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file riscv_pipeline_utilization_synth.rpt -pb riscv_pipeline_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.070 . Memory (MB): peak = 685.641 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Thu Jun  5 13:10:34 2025...

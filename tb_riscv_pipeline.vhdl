@@ -9,7 +9,7 @@ end tb_riscv_pipeline;
 architecture Behavioral of tb_riscv_pipeline is
 
     -- Component declaration for the RISC-V processor
-    component riscv_multicycle
+    component riscv_pipeline is
         Port (
             clk     : in  STD_LOGIC;
             reset   : in  STD_LOGIC
@@ -26,7 +26,7 @@ architecture Behavioral of tb_riscv_pipeline is
 begin
 
     -- Instantiate the RISC-V processor
-    uut: riscv_multicycle
+    uut: riscv_pipeline
         Port map (
             clk => clk,
             reset => reset

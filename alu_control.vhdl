@@ -16,14 +16,17 @@ begin
     process(funct7, funct3)
     begin
         case funct3 is
-            when "000" => -- ADD, SUB
-                if funct7 = "0000000" then
-                    alu_op <= "0000"; -- ADD
-                elsif funct7 = "0100000" then
-                    alu_op <= "0001"; -- SUB
-                else
-                    alu_op <= (others => '0');
-                end if;
+            when "000" => -- SUB
+                alu_op <= "0000"; -- ADD
+            when "001" => -- SUB
+                alu_op <= "0001"; -- SUB
+--                if funct7 = "0000000" then
+--                    alu_op <= "0000"; -- ADD
+--                elsif funct7 = "0100000" then
+--                    alu_op <= "0001"; -- SUB
+--                else
+--                    alu_op <= (others => '0');
+--                end if;
             when others =>
                 alu_op <= (others => '0');
         end case;

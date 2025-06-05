@@ -1,0 +1,15 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../alu.vhdl" \
+"../../../../alu_control.vhdl" \
+"../../../../control_unit.vhdl" \
+"../../../../data_mem.vhdl" \
+"../../../../immediate_generator.vhdl" \
+"../../../../instr_mem.vhdl" \
+"../../../../pc.vhdl" \
+"../../../../reg_file.vhdl" \
+"../../../../riscv_pipeline.vhdl" \
+"../../../../tb_riscv_pipeline.vhdl" \
+
+# Do not sort compile order
+nosort
