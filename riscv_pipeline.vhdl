@@ -144,58 +144,18 @@ begin
     process(clk, reset)
         begin
             if reset = '1' then
-                --state <= FETCH;
-                --mem_write_chip <= '0';
-                --reg_write_chip <= '0';
-                --next_pc <= (others => '0');
-                --tmp_next_pc <= (others => '0');
-                --if_id_pc <= (others => '0');
---                write_data <= (others => '0');
             elsif rising_edge(clk) then
                 case state is
                     when FETCH =>
-                        --reg_write_chip <= '0';
-                        --tmp_next_pc <= std_logic_vector(unsigned(pc) + 4);
                         state <= DECODE;
                     when DECODE =>
                         state <= EXECUTE;
                     when EXECUTE =>
                         state <= MEMORY;
                     when MEMORY =>
---                        if mem_write = '1' then
---                            mem_write_chip <= '1';
---                        end if;
-                       
-                       -- determine new PC for next instruction (assume already incremented by 4) 
---                       if branch = '1' and id_ex_reg1 /= id_ex_reg2 then
---                            next_pc <= std_logic_vector(signed(tmp_next_pc) + signed(id_ex_imm));
---                        elsif jump = '1' then
---                            next_pc <= std_logic_vector(signed(tmp_next_pc) + signed(id_ex_imm));
---                        else
---                            next_pc <= tmp_next_pc;
---                        end if;   
-                        --change_pc <= '1';
                         state <= WRITEBACK;
                     when WRITEBACK =>
-                            -- Write back to register file
---                        if reg_write = '1' then
---                            -- Write data to register file
---                            if load_addr = '1' then
---                               wb_data <= x"10000000";  -- Load base address of data memory
---                            else
---                               if mem_read = '1' then
---                                   wb_data <= mem_wb_data;
---                               else 
---                                   -- Normal ALU operations
---                                   wb_data <= mem_wb_alu;
---                               end if; 
---                            end if; 
-                            --reg_write_chip <= '1';                       
---                        end if;
-                    
-                        --if_id_pc    <= next_pc;
                         state <= FETCH;
-                        --mem_write_chip <= '0';
                 end case;
             end if;
         end process;   

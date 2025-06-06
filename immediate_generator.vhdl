@@ -35,9 +35,9 @@ begin
                 end if;                   
             when "1100011" => -- BNE
                 if instr(31) = '0' then  -- positive
-                    imm <= "00000000000000000000" & instr(7) &  instr(30 downto 25) & instr(11 downto 8) & '0';
+                    imm <= "0000000000000000000000" & instr(7) &  instr(30 downto 25) & instr(11 downto 9); -- div by 4, or shift left 2
                 else -- negative
-                    imm <= "11111111111111111111" & instr(7) &  instr(30 downto 25) & instr(11 downto 8) & '0';
+                    imm <= "1111111111111111111111" & instr(7) &  instr(30 downto 25) & instr(11 downto 9); -- div by 4, or shift left 2
                 end if;                
             when "1101111" => -- J
             
