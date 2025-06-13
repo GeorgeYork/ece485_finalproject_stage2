@@ -35,7 +35,7 @@ begin
                 reg_write <= '0'; alu_src <= '0'; mem_read <= '0'; mem_write <= '0'; branch <= '1'; jump <= '0'; load_addr <= '0';
             when "1101111" => -- J
                 reg_write <= '0'; alu_src <= '0'; mem_read <= '0'; mem_write <= '0'; branch <= '0'; jump <= '1'; load_addr <= '0';
-            when others => -- NOP
+            when others => -- NOP [real RISC-V uses ADDI for the NOP]
                 reg_write <= '0'; alu_src <= '0'; mem_read <= '0'; mem_write <= '0'; branch <= '0'; jump <= '0'; load_addr <= '0';
         end case;
     end process;
