@@ -11,35 +11,20 @@ entity riscv_pipeline is
 end riscv_pipeline;
 
 architecture Behavioral of riscv_pipeline is
-
---    type state_type is (FETCH, DECODE, EXECUTE, MEMORY, WRITEBACK);
---    signal state : state_type := FETCH;
     
     -- Signals for pipeline stages
     signal pc, pc_byte_not_word         : STD_LOGIC_VECTOR(31 downto 0);
+    signal if_id_pc, id_ex_pc, ex_mem_pc, next_pc    : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
     signal instr      : STD_LOGIC_VECTOR(31 downto 0);
     signal id_ex_alu_result, ex_mem_alu_result, mem_wb_alu_result : STD_LOGIC_VECTOR(31 downto 0);
     signal mem_wb_mem_data, data_memory_byte_not_word   : STD_LOGIC_VECTOR(31 downto 0);
     signal if_id_alu_op, id_ex_alu_op     : STD_LOGIC_VECTOR(3 downto 0);
     signal if_id_imm, id_ex_imm, ex_mem_imm        : STD_LOGIC_VECTOR(31 downto 0);
-
-    -- Pipeline registers
     signal if_id_instr, id_ex_instr : STD_LOGIC_VECTOR(31 downto 0); 
-    signal if_id_pc, id_ex_pc, ex_mem_pc, next_pc    : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
     signal if_id_reg1_data, id_ex_reg1_data, ex_mem_reg1_data  : STD_LOGIC_VECTOR(31 downto 0);
     signal if_id_reg2_data, id_ex_reg2_data, ex_mem_reg2_data  : STD_LOGIC_VECTOR(31 downto 0);
-    --signal id_ex_imm   : STD_LOGIC_VECTOR(31 downto 0);
-    --signal ex_mem_alu  : STD_LOGIC_VECTOR(31 downto 0);
     signal ex_mem_reg1, ex_mem_reg2 : STD_LOGIC_VECTOR(31 downto 0);
-    signal mem_wb_alu  : STD_LOGIC_VECTOR(31 downto 0);
-    signal mem_wb_data : STD_LOGIC_VECTOR(31 downto 0);
-
-    -- Additional signals
     signal if_id_rs1, if_id_rs2 : STD_LOGIC_VECTOR(4 downto 0);
-    signal opcode       : STD_LOGIC_VECTOR(6 downto 0);
-    signal reg1_data, reg2_data : STD_LOGIC_VECTOR(31 downto 0);
-    signal alu_input_b  : STD_LOGIC_VECTOR(31 downto 0);
-    signal wb_data      : STD_LOGIC_VECTOR(31 downto 0);
     signal if_id_rd, id_ex_rd, ex_mem_rd, mem_wb_rd        : STD_LOGIC_VECTOR(4 downto 0);
 
     -- control signals for pipeline stages
@@ -51,6 +36,11 @@ architecture Behavioral of riscv_pipeline is
     signal if_id_jump, id_ex_jump, ex_mem_jump       : STD_LOGIC;
     signal if_id_load_addr, id_ex_load_addr, ex_mem_load_addr, mem_wb_load_addr  : STD_LOGIC;
     
+     -- Additional signals
+    signal opcode       : STD_LOGIC_VECTOR(6 downto 0);
+    signal alu_input_b  : STD_LOGIC_VECTOR(31 downto 0);
+    signal wb_data      : STD_LOGIC_VECTOR(31 downto 0);
+ 
     
     component pc_live 
     Port (
@@ -191,15 +181,6 @@ architecture Behavioral of riscv_pipeline is
 
 begin
 
---    -- PC logic
---    pc_inst: pc_live
---        port map (
---            clk    => clk,
---            reset  => reset,
---            pc_in  => if_id_pc,
---            pc_out => pc
---        );
-
     -- PC logic
     pc_inst: pc_live
         port map (
@@ -208,44 +189,6 @@ begin
             pc_in  => next_pc,
             pc_out => pc
         );
-
-    -- state machine to walk through 5 cyles per instruction (not pipelined)
-    -- Remove this when adding the pipeline registers and pipelining
---    process(clk, reset)
---        begin
---            if reset = '1' then
---            elsif rising_edge(clk) then
---                case state is
---                    when FETCH =>
---                        state <= DECODE;
---                    when DECODE =>
---                        state <= EXECUTE;
---                    when EXECUTE =>
---                        state <= MEMORY;
---                    when MEMORY =>
---                        state <= WRITEBACK;
---                    when WRITEBACK =>
---                        state <= FETCH;
---                end case;
---            end if;
---        end process;   
-    
-    -- Moore Machine, outputs determined by State
-    -- FETCH
-    --tmp_next_pc <= std_logic_vector(unsigned(pc) + 4) when state = FETCH else tmp_next_pc;
-    -- MEMORY
---    mem_write_chip <= '1' when (state = MEMORY and mem_write = '1') else '0';
---    next_pc <= std_logic_vector(signed(pc) + signed(id_ex_imm)) when (state = MEMORY and branch = '1' and id_ex_reg1 /= id_ex_reg2) else
---               std_logic_vector(signed(pc) + signed(id_ex_imm)) when (state = MEMORY and jump = '1') else
---               std_logic_vector(unsigned(pc) + 4) when state = MEMORY else
---               next_pc;
---    -- WRITEBACK
---    reg_write_chip <= '1' when (state = WRITEBACK and reg_write = '1') else '0';
---    if_id_pc   <= next_pc when state = WRITEBACK else if_id_pc;
---    wb_data <= x"10000000" when (state = WRITEBACK and reg_write = '1' and load_addr = '1') else
---               mem_wb_data when (state = WRITEBACK and reg_write = '1' and mem_read = '1') else
---               mem_wb_alu  when (state = WRITEBACK and reg_write = '1' and mem_read = '0') else
---               wb_data;
     
     -- update temporary registers to support pipelining (state machine no longer needed... as each instruction is at a different state)
     pipe_reg: pipeline_registers
@@ -368,10 +311,8 @@ begin
                 );
                 
     -- ID/EX pipeline registers
---    id_ex_reg1 <= reg1_data;
---    id_ex_reg2 <= reg2_data;
---    id_ex_imm  <= imm;
-------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------
     -- EX units
     -- mux to select alu input B
     alu_input_b <= id_ex_imm when id_ex_alu_src = '1' else
@@ -386,8 +327,7 @@ begin
         );
 
     -- EX/MEM pipeline register
---    ex_mem_alu  <= alu_result;
---    ex_mem_reg2 <= id_ex_reg2;
+
 ----------------------------------------------------------------------------------------
     --  MEM units
     
@@ -403,8 +343,7 @@ begin
         );
 
     -- MEM/WB pipeline register
-    --mem_wb_alu  <= ex_mem_alu;
-    --mem_wb_data <= mem_data;
+
     
     next_pc <= std_logic_vector(signed(ex_mem_pc) + signed(ex_mem_imm)) when (ex_mem_branch = '1' and ex_mem_reg1_data /= ex_mem_reg2_data) else
                std_logic_vector(signed(ex_mem_pc) + signed(ex_mem_imm)) when (ex_mem_jump = '1') else
@@ -415,13 +354,6 @@ begin
     -- MUX to write back to register file
     wb_data <= mem_wb_mem_data when mem_wb_mem_read = '1' 
                else x"10000000" when mem_wb_load_addr = '1'  -- hack for custom load_addr instruction
-               else mem_wb_alu_result;
-               
-    --wb_rd   <= id_ex_instr(11 downto 7); -- Destination register
-    --wb_rd   <= if_id_instr(11 downto 7); -- Destination register
-
-    -- WRITEBACK
-
-    --if_id_pc   <= next_pc when state = WRITEBACK else if_id_pc;
-    
+               else mem_wb_alu_result;      
+   
 end Behavioral;

@@ -1,6 +1,6 @@
 webtalk_init -webtalk_dir C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/ece485_finalproject_stage2.sim/sim_1/behav/xsim/xsim.dir/tb_riscv_pipeline_behav/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Mon Jun 16 12:05:32 2025" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Mon Jun 16 12:30:10 2025" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2018.2 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "2258646" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "WIN64" -context "software_version_and_target_device"
@@ -14,7 +14,7 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "182b6ab8-5bb8-44e6-a12a-50e1a41af104" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "687d82e2baca48bfa79cafdff92229e0" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "45" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "47" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Microsoft Windows 8 or later , 64-bit" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "major release  (build 9200)" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "12th Gen Intel(R) Core(TM) i5-1245U" -context "user_environment"
@@ -36,7 +36,7 @@ webtalk_add_data -client xsim -key Total_Nets -value "0" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Processes -value "25" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Instances -value "15" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Xilinx_HDL_Libraries_Used -value "secureip " -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Time -value "0.19_sec" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Compiler_Time -value "0.28_sec" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Compiler_Memory -value "54332_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 3020339153 -regid "" -xml C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/ece485_finalproject_stage2.sim/sim_1/behav/xsim/xsim.dir/tb_riscv_pipeline_behav/webtalk/usage_statistics_ext_xsim.xml -html C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/ece485_finalproject_stage2.sim/sim_1/behav/xsim/xsim.dir/tb_riscv_pipeline_behav/webtalk/usage_statistics_ext_xsim.html -wdm C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/ece485_finalproject_stage2.sim/sim_1/behav/xsim/xsim.dir/tb_riscv_pipeline_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_transmit -clientid 1852091376 -regid "" -xml C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/ece485_finalproject_stage2.sim/sim_1/behav/xsim/xsim.dir/tb_riscv_pipeline_behav/webtalk/usage_statistics_ext_xsim.xml -html C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/ece485_finalproject_stage2.sim/sim_1/behav/xsim/xsim.dir/tb_riscv_pipeline_behav/webtalk/usage_statistics_ext_xsim.html -wdm C:/Users/george.york/Documents/ECE485_code/ece485_finalproject_stage2/ece485_finalproject_stage2.sim/sim_1/behav/xsim/xsim.dir/tb_riscv_pipeline_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate

@@ -33,8 +33,6 @@ architecture Behavioral of instr_mem is
         16 => x"00000000", -- NOP
         17 => x"00000000", -- NOP
         18 => x"00000000", -- NOP
-        --19 => x"FC0290E3", --       bne x5, x0, loop   1 111110 00000 00101 001 0000 1 1100011 [note: assumes PC is NOT already incremented by 4]
-        --19 => x"FC0296E3", --       bne x5, x0, loop   1 111110 00000 00101 001 011 0 1 1100011 [note: assumes PC is NOT already incremented by 4]
         19 => x"F20298E3", --       bne x5, x0, loop     1 111001 00000 00101 001 100 0 1 1100011 [note: assumes PC is NOT already incremented by 4]
         20 => x"00000000", -- NOP
         21 => x"00000000", -- NOP
