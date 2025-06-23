@@ -22,7 +22,7 @@ architecture Behavioral of reg_file is
 begin
     process(clk)
     begin
-        if falling_edge(clk) then
+        if rising_edge(clk) then
             if reg_write = '1' then
                 registers(to_integer(unsigned(rd))) <= data_in;
             end if;

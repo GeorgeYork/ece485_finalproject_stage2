@@ -40,7 +40,6 @@ architecture Behavioral of riscv_pipeline is
     signal opcode       : STD_LOGIC_VECTOR(6 downto 0);
     signal alu_input_b  : STD_LOGIC_VECTOR(31 downto 0);
     signal wb_data      : STD_LOGIC_VECTOR(31 downto 0);
-    signal clock_counter : integer := 1;
  
     
     component pc_live 
@@ -182,16 +181,6 @@ architecture Behavioral of riscv_pipeline is
 
 begin
 
-    -- clock counter process
-    process(clk, reset)
-    begin
-        if reset = '1' then
-            clock_counter <= 1;
-        elsif rising_edge(clk) then
-            clock_counter <= clock_counter + 1;
-        end if;
-    end process;
-
     -- PC logic
     pc_inst: pc_live
         port map (
@@ -200,11 +189,7 @@ begin
             pc_in  => next_pc,
             pc_out => pc
         );
-     
-    next_pc <= std_logic_vector(signed(ex_mem_pc) + signed(ex_mem_imm)) when (ex_mem_branch = '1' and ex_mem_reg1_data /= ex_mem_reg2_data) else -- branch case
-               std_logic_vector(signed(ex_mem_pc) + signed(ex_mem_imm)) when (ex_mem_jump = '1') else  -- jump case
-               std_logic_vector(unsigned(if_id_pc) + 4); -- note: this happens during IF !!! 1st two during MEM
-                      
+    
     -- update temporary registers to support pipelining (state machine no longer needed... as each instruction is at a different state)
     pipe_reg: pipeline_registers
         port map (
@@ -359,7 +344,10 @@ begin
 
     -- MEM/WB pipeline register
 
-
+    
+    next_pc <= std_logic_vector(signed(ex_mem_pc) + signed(ex_mem_imm)) when (ex_mem_branch = '1' and ex_mem_reg1_data /= ex_mem_reg2_data) else
+               std_logic_vector(signed(ex_mem_pc) + signed(ex_mem_imm)) when (ex_mem_jump = '1') else
+               std_logic_vector(unsigned(if_id_pc) + 4); -- note: this happens during IF !!! 1st two during MEM
 ------------------------------------------------------------------------------------------
     -- WB Units
     
