@@ -13,8 +13,8 @@ end riscv_pipeline;
 architecture Behavioral of riscv_pipeline is
     
     -- Signals for pipeline stages
-    signal pc, pc_byte_not_word         : STD_LOGIC_VECTOR(31 downto 0);
-    signal if_id_pc, id_ex_pc, ex_mem_pc, next_pc    : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
+    signal pc, pc_byte_not_word, NPC, next_pc         : STD_LOGIC_VECTOR(31 downto 0);
+    signal if_id_npc, id_ex_npc, ex_mem_npc              : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
     signal instr      : STD_LOGIC_VECTOR(31 downto 0);
     signal id_ex_alu_result, ex_mem_alu_result, mem_wb_alu_result : STD_LOGIC_VECTOR(31 downto 0);
     signal mem_wb_mem_data, data_memory_byte_not_word   : STD_LOGIC_VECTOR(31 downto 0);
@@ -134,7 +134,7 @@ architecture Behavioral of riscv_pipeline is
             if_id_load_addr : in STD_LOGIC;
             if_id_rd    : inout STD_LOGIC_VECTOR(4 downto 0);
             if_id_instr : in  STD_LOGIC_VECTOR(31 downto 0);
-            if_id_pc    : in  STD_LOGIC_VECTOR(31 downto 0);
+            if_id_npc    : in  STD_LOGIC_VECTOR(31 downto 0);
             if_id_reg1_data  : in  STD_LOGIC_VECTOR(31 downto 0);
             if_id_reg2_data  : in  STD_LOGIC_VECTOR(31 downto 0);
             if_id_imm        : in  STD_LOGIC_VECTOR(31 downto 0);
@@ -149,7 +149,7 @@ architecture Behavioral of riscv_pipeline is
             id_ex_load_addr : inout STD_LOGIC;
             id_ex_rd    : inout STD_LOGIC_VECTOR(4 downto 0);
             id_ex_instr : out STD_LOGIC_VECTOR(31 downto 0);
-            id_ex_pc    : inout STD_LOGIC_VECTOR(31 downto 0);
+            id_ex_npc    : inout STD_LOGIC_VECTOR(31 downto 0);
             id_ex_reg1_data  : inout  STD_LOGIC_VECTOR(31 downto 0);
             id_ex_reg2_data  : inout  STD_LOGIC_VECTOR(31 downto 0);
             id_ex_imm   : inout  STD_LOGIC_VECTOR(31 downto 0);
@@ -163,7 +163,7 @@ architecture Behavioral of riscv_pipeline is
             ex_mem_branch : out STD_LOGIC;
             ex_mem_jump : out STD_LOGIC;
             ex_mem_load_addr : inout STD_LOGIC;
-            ex_mem_pc    : out STD_LOGIC_VECTOR(31 downto 0);
+            ex_mem_npc    : out STD_LOGIC_VECTOR(31 downto 0);
             ex_mem_rd   : inout STD_LOGIC_VECTOR(4 downto 0);
             ex_mem_reg1_data : out STD_LOGIC_VECTOR(31 downto 0);
             ex_mem_reg2_data : out STD_LOGIC_VECTOR(31 downto 0);
@@ -200,11 +200,10 @@ begin
             pc_in  => next_pc,
             pc_out => pc
         );
-     
-    next_pc <= std_logic_vector(signed(ex_mem_pc) + signed(ex_mem_imm)) when (ex_mem_branch = '1' and ex_mem_reg1_data /= ex_mem_reg2_data) else -- branch case
-               std_logic_vector(signed(ex_mem_pc) + signed(ex_mem_imm)) when (ex_mem_jump = '1') else  -- jump case
-               std_logic_vector(unsigned(if_id_pc) + 4); -- note: this happens during IF !!! 1st two during MEM
-                      
+ 
+    NPC <= std_logic_vector(signed(pc) + 4);
+                
+
     -- update temporary registers to support pipelining (state machine no longer needed... as each instruction is at a different state)
     pipe_reg: pipeline_registers
         port map (
@@ -219,7 +218,7 @@ begin
             if_id_jump => if_id_jump,
             if_id_load_addr => if_id_load_addr,
             if_id_instr => if_id_instr,
-            if_id_pc    => if_id_pc,
+            if_id_npc    => if_id_npc,
             if_id_rd    => if_id_rd,
             if_id_reg1_data  => if_id_reg1_data,
             if_id_reg2_data  => if_id_reg2_data,
@@ -236,7 +235,7 @@ begin
             id_ex_load_addr => id_ex_load_addr,
             id_ex_rd    => id_ex_rd,
             id_ex_instr => id_ex_instr,
-            id_ex_pc    => id_ex_pc,
+            id_ex_npc    => id_ex_npc,
             id_ex_reg1_data  => id_ex_reg1_data,
             id_ex_reg2_data  => id_ex_reg2_data,
             id_ex_imm   => id_ex_imm,
@@ -250,7 +249,7 @@ begin
             ex_mem_branch => ex_mem_branch,
             ex_mem_jump => ex_mem_jump,
             ex_mem_load_addr => ex_mem_load_addr,
-            ex_mem_pc => ex_mem_pc,
+            ex_mem_npc => ex_mem_npc,
             ex_mem_rd   => ex_mem_rd,
             ex_mem_reg1_data => ex_mem_reg1_data,
             ex_mem_reg2_data => ex_mem_reg2_data,
@@ -276,7 +275,7 @@ begin
         );   
     -- IF/ID pipeline registers
     if_id_instr <= instr;
-    if_id_pc    <= pc;
+    if_id_npc    <= NPC;
 
     -- Decode instruction fields
     if_id_rs1 <= if_id_instr(19 downto 15);
@@ -357,6 +356,10 @@ begin
             mem_write => ex_mem_mem_write
         );
 
+    next_pc <= std_logic_vector(signed(ex_mem_npc) + signed(ex_mem_imm)) when (ex_mem_branch = '1' and ex_mem_reg1_data /= ex_mem_reg2_data) else -- branch case
+               std_logic_vector(signed(ex_mem_npc) + signed(ex_mem_imm)) when (ex_mem_jump = '1') else  -- jump case
+               NPC; -- note: this happens during IF !!! 1st two during MEM
+                      
     -- MEM/WB pipeline register
 
 

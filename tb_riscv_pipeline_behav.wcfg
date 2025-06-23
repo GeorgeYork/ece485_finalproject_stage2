@@ -10,15 +10,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="252993200fs"></ZoomStartTime>
-      <ZoomEndTime time="909401360fs"></ZoomEndTime>
-      <Cursor1Time time="800000000fs"></Cursor1Time>
+      <ZoomStartTime time="1476306000fs"></ZoomStartTime>
+      <ZoomEndTime time="1613406001fs"></ZoomEndTime>
+      <Cursor1Time time="1529282000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="170"></NameColumnWidth>
-      <ValueColumnWidth column_width="81"></ValueColumnWidth>
+      <NameColumnWidth column_width="169"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="21" />
+   <WVObjectSize size="23" />
    <wvobject fp_name="/tb_riscv_pipeline/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -36,19 +36,29 @@
       <obj_property name="ObjectShortName">pc[31:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_riscv_pipeline/uut/id_ex_pc" type="array">
-      <obj_property name="ElementShortName">id_ex_pc[31:0]</obj_property>
-      <obj_property name="ObjectShortName">id_ex_pc[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_riscv_pipeline/uut/ex_mem_pc" type="array">
-      <obj_property name="ElementShortName">ex_mem_pc[31:0]</obj_property>
-      <obj_property name="ObjectShortName">ex_mem_pc[31:0]</obj_property>
+   <wvobject fp_name="/tb_riscv_pipeline/uut/NPC" type="array">
+      <obj_property name="ElementShortName">NPC[31:0]</obj_property>
+      <obj_property name="ObjectShortName">NPC[31:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_riscv_pipeline/uut/next_pc" type="array">
       <obj_property name="ElementShortName">next_pc[31:0]</obj_property>
       <obj_property name="ObjectShortName">next_pc[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_riscv_pipeline/uut/if_id_npc" type="array">
+      <obj_property name="ElementShortName">if_id_npc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">if_id_npc[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_riscv_pipeline/uut/id_ex_npc" type="array">
+      <obj_property name="ElementShortName">id_ex_npc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">id_ex_npc[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_riscv_pipeline/uut/ex_mem_npc" type="array">
+      <obj_property name="ElementShortName">ex_mem_npc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_mem_npc[31:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_riscv_pipeline/uut/instr" type="array">
@@ -92,9 +102,9 @@
       <wvobject fp_name="/tb_riscv_pipeline/uut/reg_file_inst/registers[5]" type="array">
          <obj_property name="ElementShortName">[5][31:0]</obj_property>
          <obj_property name="ObjectShortName">[5][31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          <obj_property name="CustomSignalColor">#0000FF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_riscv_pipeline/uut/reg_file_inst/registers[6]" type="array">
          <obj_property name="ElementShortName">[6][31:0]</obj_property>
@@ -103,9 +113,9 @@
       <wvobject fp_name="/tb_riscv_pipeline/uut/reg_file_inst/registers[7]" type="array">
          <obj_property name="ElementShortName">[7][31:0]</obj_property>
          <obj_property name="ObjectShortName">[7][31:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          <obj_property name="CustomSignalColor">#FF0000</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_riscv_pipeline/uut/reg_file_inst/registers[8]" type="array">
          <obj_property name="ElementShortName">[8][31:0]</obj_property>
