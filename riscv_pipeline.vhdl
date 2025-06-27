@@ -1,4 +1,18 @@
-
+---------------------------------------------------------------------------------------
+-- Final Project Stage 2: RISCV_Pipeline
+-- AUTHOR: 
+-- DESCRIPTION:
+--   Implementation of a 5 stage RISC-V multicycle architecture (IF-ID-EX-MEM-WB)
+--   that is pipelined, but has no hazard dedection, do NOPs must be used to prevent hazards.
+--   The only instructions implemented are:
+--          ADD, ADDI, SUBI, LW, SW, j, and BNE
+--          Also implemented is a custom instruction Load_Addr, similar to LA,
+--          but always loads the defaults address of 0x10000000
+--          All other decoded instructions are assumed to be a NOP,
+--          which sets all control signals to '0'
+--   The Data memory (LOOP label) begins at memory location 0x10000000
+--
+---------------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -11,38 +25,59 @@ entity riscv_pipeline is
 end riscv_pipeline;
 
 architecture Behavioral of riscv_pipeline is
+
+    -- States no longer needed since with pipeline, each instruction is in a different state
+	-- States flow through pipelined registers
+    --type state_type is (FETCH, DECODE, EXECUTE, MEMORY, WRITEBACK);
+    --signal state : state_type := FETCH;
     
-    -- Signals for pipeline stages
-    signal pc, pc_byte_not_word, NPC, next_pc         : STD_LOGIC_VECTOR(31 downto 0);
-    signal if_id_npc, id_ex_npc, ex_mem_npc              : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
-    signal instr      : STD_LOGIC_VECTOR(31 downto 0);
-    signal id_ex_alu_result, ex_mem_alu_result, mem_wb_alu_result : STD_LOGIC_VECTOR(31 downto 0);
-    signal mem_wb_mem_data, data_memory_byte_not_word   : STD_LOGIC_VECTOR(31 downto 0);
-    signal if_id_alu_op, id_ex_alu_op     : STD_LOGIC_VECTOR(3 downto 0);
-    signal if_id_imm, id_ex_imm, ex_mem_imm        : STD_LOGIC_VECTOR(31 downto 0);
-    signal if_id_instr, id_ex_instr : STD_LOGIC_VECTOR(31 downto 0); 
-    signal if_id_reg1_data, id_ex_reg1_data, ex_mem_reg1_data  : STD_LOGIC_VECTOR(31 downto 0);
-    signal if_id_reg2_data, id_ex_reg2_data, ex_mem_reg2_data  : STD_LOGIC_VECTOR(31 downto 0);
-    signal ex_mem_reg1, ex_mem_reg2 : STD_LOGIC_VECTOR(31 downto 0);
-    signal if_id_rs1, if_id_rs2 : STD_LOGIC_VECTOR(4 downto 0);
-    signal if_id_rd, id_ex_rd, ex_mem_rd, mem_wb_rd        : STD_LOGIC_VECTOR(4 downto 0);
+    -- Basic Registers
+    signal pc, pc_byte_not_word, NPC, next_pc           : STD_LOGIC_VECTOR(31 downto 0);
+    signal instr                                        : STD_LOGIC_VECTOR(31 downto 0);
+    signal opcode                                       : STD_LOGIC_VECTOR(6 downto 0);
+    signal reg1_data, reg2_data                         : STD_LOGIC_VECTOR(31 downto 0);
+    signal alu_input_a, alu_input_b, alu_result  : STD_LOGIC_VECTOR(31 downto 0);
+    signal wb_data                                      : STD_LOGIC_VECTOR(31 downto 0);
+    signal mem_data, data_memory_byte_not_word, mem_wb_mem_data   : STD_LOGIC_VECTOR(31 downto 0);
+    signal clock_counter : integer := 1;
+     -- control signals
+    signal mem_read   : STD_LOGIC;
+    signal mem_write, mem_write_chip  : STD_LOGIC;
+    signal alu_src    : STD_LOGIC;
+    signal branch     : STD_LOGIC;
+    signal jump       : STD_LOGIC;
+    signal load_addr  : STD_LOGIC;
+    signal reg_write, reg_write_chip  : STD_LOGIC;
+    signal rs1, rs2, rd : STD_LOGIC_VECTOR(4 downto 0);
+    signal wb_rd        : STD_LOGIC_VECTOR(4 downto 0);
+       
+    -- Registers for pipeline stages
+    signal if_id_npc, id_ex_npc, ex_mem_npc, mem_wb_npc             : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
+    signal id_ex_alu_result, ex_mem_alu_result, mem_wb_alu_result   : STD_LOGIC_VECTOR(31 downto 0);
+    signal if_id_alu_op, id_ex_alu_op, ex_mem_alu_op, mem_wb_alu_op : STD_LOGIC_VECTOR(3 downto 0);
+    signal if_id_imm, id_ex_imm, ex_mem_imm, mem_wb_imm             : STD_LOGIC_VECTOR(31 downto 0);
+    signal if_id_instr, id_ex_instr, ex_mem_instr, mem_wb_instr     : STD_LOGIC_VECTOR(31 downto 0); 
+    signal if_id_reg1_data, id_ex_reg1_data, ex_mem_reg1_data, mem_wb_reg1_data : STD_LOGIC_VECTOR(31 downto 0);
+    signal if_id_reg2_data, id_ex_reg2_data, ex_mem_reg2_data, mem_wb_reg2_data : STD_LOGIC_VECTOR(31 downto 0);
+    signal if_id_rs1, id_ex_rs1, ex_mem_rs1, mem_wb_rs1 : STD_LOGIC_VECTOR(4 downto 0);
+    signal if_id_rs2, id_ex_rs2, ex_mem_rs2, mem_wb_rs2 : STD_LOGIC_VECTOR(4 downto 0);
+    signal if_id_rd, id_ex_rd, ex_mem_rd, mem_wb_rd     : STD_LOGIC_VECTOR(4 downto 0);
 
     -- control signals for pipeline stages
     signal if_id_reg_write, id_ex_reg_write, ex_mem_reg_write, mem_wb_reg_write  : STD_LOGIC;
-    signal if_id_alu_src, id_ex_alu_src, ex_mem_alu_src, mem_wb_alu_src     : STD_LOGIC;
-    signal if_id_mem_read, id_ex_mem_read, ex_mem_mem_read, mem_wb_mem_read   : STD_LOGIC;
+    signal if_id_alu_src, id_ex_alu_src, ex_mem_alu_src, mem_wb_alu_src          : STD_LOGIC;
+    signal if_id_mem_read, id_ex_mem_read, ex_mem_mem_read, mem_wb_mem_read      : STD_LOGIC;
     signal if_id_mem_write, id_ex_mem_write, ex_mem_mem_write, mem_wb_mem_write  : STD_LOGIC;
-    signal if_id_branch, id_ex_branch, ex_mem_branch     : STD_LOGIC;
-    signal if_id_jump, id_ex_jump, ex_mem_jump       : STD_LOGIC;
+    signal if_id_branch, id_ex_branch, ex_mem_branch, mem_wb_branch              : STD_LOGIC;
+    signal if_id_jump, id_ex_jump, ex_mem_jump, mem_wb_jump                      : STD_LOGIC;
     signal if_id_load_addr, id_ex_load_addr, ex_mem_load_addr, mem_wb_load_addr  : STD_LOGIC;
     
      -- Additional signals
-    signal opcode       : STD_LOGIC_VECTOR(6 downto 0);
-    signal alu_input_b  : STD_LOGIC_VECTOR(31 downto 0);
-    signal wb_data      : STD_LOGIC_VECTOR(31 downto 0);
-    signal clock_counter : integer := 1;
- 
-    
+    signal stall, start_stall, double_stall        : STD_LOGIC;
+    signal stall_counter : integer range 0 to 3 := 0;
+    signal mux_select_A  : STD_LOGIC_VECTOR(1 downto 0) := (others => '0');
+    signal mux_select_B  : STD_LOGIC_VECTOR(1 downto 0) := (others => '0');
+     
     component pc_live 
     Port (
         clk     : in  STD_LOGIC;
@@ -192,6 +227,8 @@ begin
         end if;
     end process;
 
+    -- IF units and Control units ------------------------------------------------------
+    
     -- PC logic
     pc_inst: pc_live
         port map (
@@ -201,8 +238,7 @@ begin
             pc_out => pc
         );
  
-    NPC <= std_logic_vector(signed(pc) + 4);
-                
+    NPC <= std_logic_vector(signed(pc) + 4);     
 
     -- update temporary registers to support pipelining (state machine no longer needed... as each instruction is at a different state)
     pipe_reg: pipeline_registers
@@ -265,7 +301,6 @@ begin
             mem_wb_alu_result  => mem_wb_alu_result
         );
     
-    -- IF units 
     -- Instruction memory
     pc_byte_not_word <= "00" & pc(31 downto 2);  -- divide by 4 by shifting left 2, since byte addressable, not word addressable
     instr_mem_inst: instr_mem
@@ -287,58 +322,73 @@ begin
     control_unit_inst: control_unit
         port map (
             opcode    => opcode,
-            reg_write => if_id_reg_write,
-            mem_read  => if_id_mem_read,
-            mem_write => if_id_mem_write,
-            alu_src   => if_id_alu_src,
-            branch    => if_id_branch,
-            load_addr => if_id_load_addr,
-            jump      => if_id_jump
+            reg_write => reg_write,
+            mem_read  => mem_read,
+            mem_write => mem_write,
+            alu_src   => alu_src,
+            branch    => branch,
+            load_addr => load_addr,
+            jump      => jump
         );
+    if_id_reg_write <= reg_write;
+	if_id_mem_read <= mem_read;
+	if_id_mem_write <= mem_write;
+	if_id_alu_src <= alu_src;
+	if_id_branch <= branch;
+	if_id_load_addr <= load_addr;
+	if_id_jump	<= jump;
+            
+    -- ALU control unit
+    alu_control_inst: alu_control
+            port map (
+                funct3 => if_id_instr(14 downto 12),
+                funct7 => if_id_instr(31 downto 25),
+                alu_op => if_id_alu_op
+            );	
 --------------------------------------------------------------------------------
     -- ID units
     -- Register file [used in ID and WB stages]
+    reg_write_chip <= mem_wb_reg_write;
     reg_file_inst: reg_file
         port map (
-            clk       => clk,
-            reg_write => mem_wb_reg_write,
-            rs1       => if_id_rs1,
-            rs2       => if_id_rs2,
-            rd        => mem_wb_rd,
-            data_in   => wb_data,
-            data_out1 => if_id_reg1_data,
-            data_out2 => if_id_reg2_data
-        );    
+        clk       => clk,
+        reg_write => reg_write_chip,
+        rs1       => if_id_rs1,
+        rs2       => if_id_rs2,
+        rd        => mem_wb_rd,
+        data_in   => wb_data,
+        data_out1 => reg1_data,
+        data_out2 => reg2_data
+    );    
+    if_id_reg1_data <= reg1_data;  
+    if_id_reg2_data <= reg2_data;
+   
     -- Immediate generator
         immediate_generator_inst: immediate_generator
             port map (
                 instr => if_id_instr,
                 imm   => if_id_imm
             );
-            
-    -- ALU control unit
-        alu_control_inst: alu_control
-                port map (
-                    funct3 => if_id_instr(14 downto 12),
-                    funct7 => if_id_instr(31 downto 25),
-                    alu_op => if_id_alu_op
-                );
+
                 
     -- ID/EX pipeline registers
 
 -----------------------------------------------------------
     -- EX units
+    alu_input_a <= id_ex_reg1_data;  
+                       
     -- mux to select alu input B
     alu_input_b <= id_ex_imm when id_ex_alu_src = '1' else
                    id_ex_reg2_data;
     -- ALU
     alu_inst: alu
         port map (
-            a      => id_ex_reg1_data,
+            a      => alu_input_a,
             b      => alu_input_b,
             op     => id_ex_alu_op,
-            result => id_ex_alu_result
+            result => alu_result
         );
+        id_ex_alu_result <= alu_result;
 
     -- EX/MEM pipeline register
 
@@ -349,12 +399,13 @@ begin
     data_memory_byte_not_word <= "00" & ex_mem_alu_result(31 downto 2);  -- divide by 4 by shifting left 2, since byte addressable, not word addressable
     data_mem_inst: data_mem
         port map (
-            addr      => data_memory_byte_not_word,
-            data_in   => ex_mem_reg2_data,
-            data_out  => mem_wb_mem_data,
-            mem_read  => ex_mem_mem_read,
-            mem_write => ex_mem_mem_write
-        );
+        addr      => data_memory_byte_not_word,
+        data_in   => ex_mem_reg2_data,
+        data_out  => mem_data,
+        mem_read  => ex_mem_mem_read,
+        mem_write => ex_mem_mem_write
+    );
+    mem_wb_mem_data <= mem_data; 
 
     next_pc <= std_logic_vector(signed(ex_mem_npc) + signed(ex_mem_imm)) when (ex_mem_branch = '1' and ex_mem_reg1_data /= ex_mem_reg2_data) else -- branch case
                std_logic_vector(signed(ex_mem_npc) + signed(ex_mem_imm)) when (ex_mem_jump = '1') else  -- jump case

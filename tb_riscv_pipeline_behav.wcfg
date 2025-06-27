@@ -10,12 +10,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1476306000fs"></ZoomStartTime>
-      <ZoomEndTime time="1613406001fs"></ZoomEndTime>
-      <Cursor1Time time="1529282000fs"></Cursor1Time>
+      <ZoomStartTime time="1100000000fs"></ZoomStartTime>
+      <ZoomEndTime time="1237500001fs"></ZoomEndTime>
+      <Cursor1Time time="1169300000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="169"></NameColumnWidth>
+      <NameColumnWidth column_width="165"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="23" />
@@ -102,9 +102,6 @@
       <wvobject fp_name="/tb_riscv_pipeline/uut/reg_file_inst/registers[5]" type="array">
          <obj_property name="ElementShortName">[5][31:0]</obj_property>
          <obj_property name="ObjectShortName">[5][31:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#0000FF</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_riscv_pipeline/uut/reg_file_inst/registers[6]" type="array">
          <obj_property name="ElementShortName">[6][31:0]</obj_property>
@@ -113,8 +110,6 @@
       <wvobject fp_name="/tb_riscv_pipeline/uut/reg_file_inst/registers[7]" type="array">
          <obj_property name="ElementShortName">[7][31:0]</obj_property>
          <obj_property name="ObjectShortName">[7][31:0]</obj_property>
-         <obj_property name="CustomSignalColor">#FF0000</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_riscv_pipeline/uut/reg_file_inst/registers[8]" type="array">
