@@ -33,13 +33,11 @@ architecture Behavioral of instr_mem is
         16 => x"00000000", -- NOP
         17 => x"00000000", -- NOP
         18 => x"00000000", -- NOP
-        --19 => x"F20298E3", --       bne x5, x0, loop     1 111001 00000 00101 001 100 0 1 1100011 [note: assumes PC is NOT already incremented by 4]
         19 => x"F20290E3", --       bne x5, x0, loop       1 111001 00000 00101 001 000 0 1 1100011 [-56; note: assumes PC is already incremented by 4]
                                                         -- 1111 0010 0000 0010 1001 0000 1110 0011
         20 => x"00000000", -- NOP
         21 => x"00000000", -- NOP
         22 => x"00000000", -- NOP    
-        --23 => x"0000006f", -- done: j done          00000000000000000000 00000 1101111  [note: assumes PC is NOT already incremented by 4]
         23 => x"FE7FF06F", -- done: j done            1 11111100 1 1111111111 00000 1101111  [-4; note: assumes PC is already incremented by 4]
                                                  --   1111 1110 0111 1111 1111 0000 0110 1111
         
