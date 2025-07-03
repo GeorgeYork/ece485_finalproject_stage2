@@ -19,6 +19,7 @@ end reg_file;
 architecture Behavioral of reg_file is
     type reg_array is array (0 to 31) of STD_LOGIC_VECTOR(31 downto 0);
     signal registers : reg_array := (others => (others => '0'));
+    signal display_x5, display_x6, display_x7, display_x10 : STD_LOGIC_VECTOR(31 downto 0);
 begin
     process(clk)
     begin
@@ -31,4 +32,10 @@ begin
 
     data_out1 <= registers(to_integer(unsigned(rs1)));
     data_out2 <= registers(to_integer(unsigned(rs2)));
+    
+    -- hack to just display the 4 registers we use on the simulation plot, vs all 32 registers
+    display_x5 <= registers(5);
+    display_x6 <= registers(6);
+    display_x7 <= registers(7);
+    display_x10 <= registers(10);
 end Behavioral;
